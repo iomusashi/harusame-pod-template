@@ -44,6 +44,7 @@ module Pod
       end
 
       puts "\n------------------------------"
+      puts "Creating Harusame Template..."
       puts ""
       puts "To get you started we need to ask a few questions, this should only take a minute."
       puts ""

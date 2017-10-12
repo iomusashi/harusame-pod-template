@@ -16,7 +16,6 @@ module Pod
 
     def perform
 
-      puts "Creating Harusame template..."
       framework = configurator.ask_with_answers("Which testing frameworks will you use", ["Quick", "None"]).to_sym
 
       case framework
