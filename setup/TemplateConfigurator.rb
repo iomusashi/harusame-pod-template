@@ -2,11 +2,13 @@ require 'fileutils'
 require 'colored2'
 
 module Pod
+
   class TemplateConfigurator
 
     attr_reader :pod_name, :pods_for_podfile, :prefixes, :test_example_file, :username, :email
 
     def initialize(pod_name)
+
       @pod_name = pod_name
       @pods_for_podfile = []
       @prefixes = []
@@ -14,6 +16,7 @@ module Pod
     end
 
     def ask(question)
+
       answer = ""
       loop do
         puts "\n#{question}?"
@@ -68,16 +71,10 @@ module Pod
     end
 
     def run
+
       @message_bank.welcome_message
 
-      framework = self.ask_with_answers("What language do you want to use?", ["Swift", "ObjC"]).to_sym
-      case framework
-        when :swift
-          ConfigureSwift.perform(configurator: self)
-
-        when :objc
-          ConfigureIOS.perform(configurator: self)
-      end
+      ConfigureSwift.perform(configurator: self)
 
       replace_variables_in_files
       clean_template_files

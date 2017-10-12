@@ -3,13 +3,16 @@ require 'xcodeproj'
 module Pod
 
   class ProjectManipulator
+
     attr_reader :configurator, :xcodeproj_path, :platform, :remove_demo_target, :string_replacements, :prefix
 
     def self.perform(options)
+
       new(options).perform
     end
 
     def initialize(options)
+
       @xcodeproj_path = options.fetch(:xcodeproj_path)
       @configurator = options.fetch(:configurator)
       @platform = options.fetch(:platform)
@@ -18,6 +21,7 @@ module Pod
     end
 
     def run
+
       @string_replacements = {
         "PROJECT_OWNER" => @configurator.user_name,
         "TODAYS_DATE" => @configurator.date,
@@ -37,6 +41,7 @@ module Pod
     end
 
     def add_podspec_metadata
+
       project_metadata_item = @project.root_object.main_group.children.select { |group| group.name == "Podspec Metadata" }.first
       project_metadata_item.new_file "../" + @configurator.pod_name  + ".podspec"
       project_metadata_item.new_file "../README.md"
@@ -44,6 +49,7 @@ module Pod
     end
 
     def remove_demo_project
+
       app_project = @project.native_targets.find { |target| target.product_type == "com.apple.product-type.application" }
       test_target = @project.native_targets.find { |target| target.product_type == "com.apple.product-type.bundle.unit-test" }
       test_target.name = @configurator.pod_name + "_Tests"
@@ -84,10 +90,12 @@ RUBY
     end
 
     def project_folder
+
       File.dirname @xcodeproj_path
     end
 
     def rename_files
+
       # shared schemes have project specific names
       scheme_path = project_folder + "/PROJECT.xcodeproj/xcshareddata/xcschemes/"
       File.rename(scheme_path + "PROJECT.xcscheme", scheme_path +  @configurator.pod_name + "-Example.xcscheme")
@@ -118,12 +126,14 @@ RUBY
     end
 
     def rename_project_folder
+
       if Dir.exist? project_folder + "/PROJECT"
         File.rename(project_folder + "/PROJECT", project_folder + "/" + @configurator.pod_name)
       end
     end
 
     def replace_internal_project_settings
+
       Dir.glob(project_folder + "/**/**/**/**").each do |name|
         next if Dir.exists? name
         text = File.read(name)
