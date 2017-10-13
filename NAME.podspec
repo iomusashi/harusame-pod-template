@@ -30,13 +30,9 @@ TODO: Add long description of the pod here.
 
   s.ios.deployment_target = '8.0'
 
-  s.source_files = '${POD_NAME}/Classes/**/*'
-  
-  # s.resource_bundles = {
-  #   '${POD_NAME}' => ['${POD_NAME}/Assets/*.png']
-  # }
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.source_files = '${POD_NAME}/Classes/**/*', '${POD_NAME}/harusame.xcdatamodeld', '${POD_NAME}/harusame.xcdatamodeld/*.xcdatamodeld'
+  s.resources = [ '${POD_NAME}/harusame.xcdatamodeld', '${POD_NAME}/harusame.xcdatamodeld/*.xcdatamodeld' ]
+  s.preserve_paths = '${POD_NAME}/harusame.xcdatamodeld'
+  s.framework = 'CoreData'
+  s.requires_arc = true
 end
