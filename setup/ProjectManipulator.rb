@@ -80,6 +80,8 @@ module Pod
       podfile_path = project_folder + "/Podfile"
       podfile_text = <<-RUBY
 use_frameworks!
+platform :ios, '10.0'
+
 target '#{test_target.name}' do
   pod '#{@configurator.pod_name}', :path => '../'
   

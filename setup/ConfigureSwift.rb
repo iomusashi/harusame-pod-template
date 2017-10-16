@@ -49,5 +49,5 @@ module Pod
       File.open("NAME.podspec", "w") { |file| file.puts text }
     end
   end
-
 end
+
