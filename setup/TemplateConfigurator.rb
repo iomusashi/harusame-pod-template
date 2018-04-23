@@ -135,7 +135,7 @@ module Pod
       podfile = File.read podfile_path
       podfile_content = @pods_for_podfile.map do |pod|
         "pod '" + pod + "'"
-      end.join("\n  ")
+      end.join("\n    ")
       podfile.gsub!("${INCLUDED_PODS}", podfile_content)
       File.open(podfile_path, "w") { |file| file.puts podfile }
     end
@@ -153,9 +153,8 @@ module Pod
       File.open(prefix_path, "w") { |file| file.puts pch }
     end
 
-    def set_test_framework(test_type, extension)
+    def set_test_framework(test_type, extension, folder)
       content_path = "setup/test_examples/" + test_type + "." + extension
-      folder = extension == "m" ? "ios" : "swift"
       tests_path = "templates/" + folder + "/Example/Tests/Tests." + extension
       tests = File.read tests_path
       tests.gsub!("${TEST_EXAMPLE}", File.read(content_path) )
