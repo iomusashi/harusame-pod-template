@@ -1,19 +1,19 @@
-pod-template
+harusame-pod-template
 ============
 
-An opinionated template for creating a Pod with the following features:
-
-- Git as the source control management system
-- Clean folder structure
-- Project generation
-- MIT license
-- Testing as a standard
-- Turnkey access to Travis CI
-- Also supports Carthage
+A Pod template for creating api-clients.
 
 ## Getting started
 
-There are two reasons for wanting to work on this template, making your own or improving the one for everyone's. In both cases you will want to work with the ruby classes inside the `setup` folder, and the example base template that it works on from inside `template/ios/`. 
+Use this template using `pod lib create`:
+
+```
+$ pod lib create ForgedHarusame --template-url=https://github.com/iomusashi/harusame-pod-template.git
+```
+
+## Updating
+
+Work with the ruby classes inside the `setup` folder, and the example base template that it works on from inside `template/ios/`.
 
 ## Best practices
 
