@@ -21,8 +21,8 @@ module Pod
       case framework
 
         when :quick
-          configurator.add_pod_to_podfile "Quick', '~> 1.2.0"
-          configurator.add_pod_to_podfile "Nimble', '~> 7.0.2"
+          configurator.add_pod_to_podfile "Quick', '~> 1.3.0"
+          configurator.add_pod_to_podfile "Nimble', '~> 7.1.1"
           configurator.set_test_framework "quick", "swift", "swift"
 
         when :none
